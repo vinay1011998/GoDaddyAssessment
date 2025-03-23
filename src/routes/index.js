@@ -1,8 +1,13 @@
 import React, { lazy, Suspense } from "react";
-import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Redirect,
+  Switch,
+} from "react-router-dom";
 
-const RepoList = lazy(() => import("../components/table"));
-const RepoDetails = lazy(() => import("../components/cards"));
+const RepoList = lazy(() => import("./RepositoryList"));
+const RepoDetails = lazy(() => import("./RepositoryDetails"));
 
 const AppRoutes = () => {
   return (
@@ -11,7 +16,7 @@ const AppRoutes = () => {
         <Switch>
           <Redirect exact from="/" to="/repos" />
           <Route exact path="/repos" component={RepoList} />
-          <Route exact path="/repos/:id" component={RepoDetails} /> 
+          <Route exact path="/repos/:id" component={RepoDetails} />
           <Redirect to="/repos" />
         </Switch>
       </Suspense>

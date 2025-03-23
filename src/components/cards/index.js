@@ -1,6 +1,7 @@
 import React, { useMemo } from "react";
-import useFetchData from "../../hooks/useFetchData";
 import { useParams } from "react-router-dom";
+
+import useFetchData from "../../hooks/useFetchData";
 import {
   Row,
   Column,
@@ -16,7 +17,8 @@ import {
 } from "@innovaccer/design-system";
 
 const RepositoryCard = () => {
-  const { id } = useParams();
+  const { id } = useParams(); // get the repo name from the url
+
   const apiUrl = useMemo(
     () => `${process.env.REACT_APP_DETAIL_API_URL}/${id}`,
     [id]
@@ -25,14 +27,19 @@ const RepositoryCard = () => {
   const { data, loading, error } = useFetchData({ url: apiUrl });
 
   if (loading) {
+    // show a spinner while the data is being fetched
     return (
-      <div className="d-flex justify-content-center align-items-center p-6">
+      <div
+        className="d-flex justify-content-center align-items-center p-6"
+        style={{ height: "100vh", width: "100vw" }}
+      >
         <Spinner appearance="primary" size="large" />
       </div>
     );
   }
 
   if (error) {
+    // show an error message if the data fetching fails
     return (
       <Card className="m-6">
         <CardBody>
@@ -72,8 +79,8 @@ const RepositoryCard = () => {
           <CardHeader>
             <Heading size="s">{name}</Heading>
           </CardHeader>
-          <CardBody>
-            <Card shadow="none" className="mb-6">
+          <CardBody className="mb-3 pb-6">
+            <Card shadow="none">
               <CardHeader className="d-flex justify-content-between">
                 <Text weight="strong">About - {name}</Text>
                 <Badge appearance={isPrivate ? "alert" : "accent4"}>
@@ -115,7 +122,7 @@ const RepositoryCard = () => {
                 <div className="d-flex flex-wrap">
                   <div className="mr-6">
                     <Text appearance="disabled" small>
-                      Forks
+                      Forks:
                     </Text>
                     <Text small className="ml-2">
                       {forks}
@@ -123,7 +130,7 @@ const RepositoryCard = () => {
                   </div>
                   <div className="mr-6">
                     <Text appearance="disabled" small>
-                      Watchers
+                      Watchers:
                     </Text>
                     <Text small className="ml-2">
                       {watchers_count}
@@ -131,7 +138,7 @@ const RepositoryCard = () => {
                   </div>
                   <div>
                     <Text appearance="disabled" small>
-                      Open Issues
+                      Open Issues:
                     </Text>
                     <Text small className="ml-2">
                       {open_issues_count}
