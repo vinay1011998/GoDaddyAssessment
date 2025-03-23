@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { Card, Table, Heading, Text } from "@innovaccer/design-system";
 import { defaultTableSchema, loaderSchema} from './constants';
 import NoDataFoundImg from "../../../assets/NoDataFound.svg";
+import './styles.css';
 
 const pageSize = 10;
 
@@ -62,7 +63,7 @@ const RepositoryTable = () => {
           withHeader={true}
           withCheckbox={false}
           onRowClick={(rowData) => {
-            history.push(`repos/${rowData.id}`);
+            history.push(`repos/${rowData.name}`);
           }}
           withPagination={true}
           pageSize={pageSize}

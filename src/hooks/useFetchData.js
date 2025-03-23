@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 
+
 function useFetchData({ url }) {
   //data state to store the fetched data
   const [data, setData] = useState([]);
@@ -10,6 +11,7 @@ function useFetchData({ url }) {
 
   useEffect(() => {
     const fetchData = async () => {
+      debugger;
       try {
         const response = await fetch(`${url}`);
         const result = await response.json();
