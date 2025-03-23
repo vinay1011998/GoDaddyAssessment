@@ -11,7 +11,6 @@ function useFetchData({ url }) {
 
   useEffect(() => {
     const fetchData = async () => {
-      debugger;
       try {
         const response = await fetch(`${url}`);
         const result = await response.json();
