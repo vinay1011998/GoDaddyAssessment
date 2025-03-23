@@ -1,0 +1,25 @@
+.card-container-contracts {
+    height: calc(100vh - 178px);
+    
+}
+
+.error-image-container{
+    margin-top: 4%;
+    text-align: center;
+}
+
+.filter-dropdown {
+    width: 192px;
+    margin-left: 8px;
+}
+
+.table-container {
+    height: 100%;
+}
+
+.placeholder-contract-name {
+    & > span {
+      width: 296px;
+      height: 16px;
+    }
+  }

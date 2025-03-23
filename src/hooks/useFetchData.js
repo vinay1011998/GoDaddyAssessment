@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 
+
 function useFetchData({ url }) {
   //data state to store the fetched data
   const [data, setData] = useState([]);
