@@ -1,5 +1,5 @@
 import React from "react";
-debugger;
+
 const App = () => {
   return (
     <div>
