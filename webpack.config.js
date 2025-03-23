@@ -1,11 +1,16 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: "./src/index.js",
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "bundle.js",
+    publicPath: "/",
+  },
+  devServer: {
+    historyApiFallback: true,
   },
   devtool: "eval-source-map",
   module: {
@@ -19,7 +24,17 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"],
+        use: [
+          "style-loader", 
+          {
+            loader: "css-loader",
+            options: { importLoaders: 1 }
+          }
+        ],
+      },
+      {
+        test: /\.svg$/,
+        use: ["@svgr/webpack", "url-loader"],
       },
     ],
   },
@@ -28,10 +43,8 @@ module.exports = {
       template: "./public/index.html",
       filename: "./index.html",
     }),
+    new Dotenv()
   ],
-  devServer: {
-    static: "./dist",
-  },
   resolve: {
     extensions: [".js", ".jsx"],
   },
