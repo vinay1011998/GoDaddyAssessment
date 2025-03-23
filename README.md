@@ -92,7 +92,3 @@ For testing, the project includes:
 ## Contact
 For questions or collaboration, please contact **vinaych1098@gmail.com**.
 
----
-
-Feel free to modify the details (GitHub link, email, etc.) as needed!
-
