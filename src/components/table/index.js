@@ -1,11 +1,12 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import { Card, Table, Heading, Text } from "@innovaccer/design-system";
+
 import { defaultTableSchema, loaderSchema} from './constants';
 import NoDataFoundImg from "../../../assets/NoDataFound.svg";
 import './styles.css';
 
-const pageSize = 10;
+const pageSize = 10; // Number of records to show per page
 
 const RepositoryTable = () => {
   const history = useHistory();
@@ -14,13 +15,13 @@ const RepositoryTable = () => {
     const { page } = options;
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_API_URL}?page=${page}&per_page=${pageSize}`
+        `${process.env.REACT_APP_LISTING_API_URL}?page=${page}&per_page=${pageSize}`
       );
       const result = await response.json();
 
       return Promise.resolve({
         schema: defaultTableSchema,
-        count: 30,
+        count: 30, // Assuming we have 30 records in total for pagination
         data:result || []
       });
     } catch (error) {
@@ -40,7 +41,7 @@ const RepositoryTable = () => {
       props.errorType === "FAILED_TO_FETCH"
     ) {
       return (
-        <div style={{ textAlign: "center" }}>
+        <div className="error-image-container">
           <img height={500} width={400} src={NoDataFoundImg} />
           <Heading as="h4" className="mt-7 title">
             No Repositories found

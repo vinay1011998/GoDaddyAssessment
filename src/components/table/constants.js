@@ -3,6 +3,7 @@ import { Placeholder } from "@innovaccer/design-system";
 
 import formatDate from "../../utils/dateFormatter";
 
+//schema for the table
 export const defaultTableSchema = [
   {
     name: "name",
@@ -28,7 +29,7 @@ export const defaultTableSchema = [
   },
   {
     name: "created_at",
-    displayName: "Created At",
+    displayName: "Created On",
     width: "25%",
     separator: false,
     sorting: false,
@@ -45,7 +46,7 @@ export const defaultTableSchema = [
   },
   {
     name: "updated_at",
-    displayName: "Updated At",
+    displayName: "Updated On",
     width: "25%",
     separator: false,
     sorting: false,
@@ -62,6 +63,7 @@ export const defaultTableSchema = [
   },
 ];
 
+//schema for the loader
 export const loaderSchema = [
   {
     name: "name",
@@ -83,7 +85,7 @@ export const loaderSchema = [
   },
   {
     name: "created_at",
-    displayName: "Created At",
+    displayName: "Created On",
     width: "25%",
     resizable: false,
     tooltip: false,
@@ -92,7 +94,7 @@ export const loaderSchema = [
   },
   {
     name: "updated_at",
-    displayName: "Updated At",
+    displayName: "Updated On",
     width: "25%",
     resizable: false,
     tooltip: false,
